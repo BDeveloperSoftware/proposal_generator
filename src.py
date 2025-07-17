@@ -20,7 +20,7 @@ if user_key != required_key:
 
 # Load .env
 load_dotenv()
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+client = OpenAI(api_key=st.secrets["api"]["OPENAI_API_KEY"])
 
 st.set_page_config(page_title="Modern AI PPT Enhancer", layout="centered")
 st.title("🎨 AI-Enhanced PowerPoint Generator (Modern Style)")
