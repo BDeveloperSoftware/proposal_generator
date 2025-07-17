@@ -9,6 +9,15 @@ from dotenv import load_dotenv
 import os
 from openai import OpenAI
 
+# ─── Security Check (Passkey via URL) ────────────────────────────────────────
+query_params = st.query_params
+user_key = query_params.get("key", None)
+required_key = st.secrets["security"]["access_key"]
+
+if user_key != required_key:
+    st.error("🔒 Access Denied: Invalid or missing key in URL.")
+    st.stop()
+
 # Load .env
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
